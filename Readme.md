@@ -1,7 +1,7 @@
 # Проект «Киноман»
 
 * Студент: [Alexander Romashko](https://up.htmlacademy.ru/ecmascript/15/user/897219).
-* Наставник: `Неизвестно`.
+* Наставник: [Владислав Поляков](https://htmlacademy.ru/profile/id1548493).
 
 ---
 
