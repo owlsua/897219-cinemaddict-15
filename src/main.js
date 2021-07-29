@@ -12,7 +12,7 @@ const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-const siteBody = document.querySelector('body')
+const siteBody = document.querySelector('body');
 const siteMain = document.querySelector('.main');
 const siteHeader = document.querySelector('.header');
 
