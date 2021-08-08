@@ -7,6 +7,11 @@ const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
+const getRandomElem = (arr) => {
+  const rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+};
+
 const generateTitle = () => {
   const titles = [
     'Made for each other',
@@ -18,9 +23,7 @@ const generateTitle = () => {
     'The-man-with-the-golden-arm',
   ];
 
-  const randomIndex = getRandomInteger(0, titles.length - 1);
-
-  return titles[randomIndex];
+  return getRandomElem(titles);
 };
 
 const generateImage = () => {
@@ -34,9 +37,7 @@ const generateImage = () => {
     'the-man-with-the-golden-arm.jpg',
   ];
 
-  const randomIndex = getRandomInteger(0, images.length - 1);
-
-  return images[randomIndex];
+  return getRandomElem(images);
 };
 
 const generateDescription = () => {
@@ -103,9 +104,7 @@ const generateDate = () => {
     '07 June 1990',
   ];
 
-  const randomIndex = getRandomInteger(0, dates.length - 1);
-
-  return dates[randomIndex];
+  return getRandomElem(dates);
 };
 
 const generateName = () => {
@@ -119,17 +118,12 @@ const generateName = () => {
     'Simona Green',
   ];
 
-  const randomIndex = getRandomInteger(0, names.length - 1);
-
-  return names[randomIndex];
+  return getRandomElem(names);
 };
 
 const generateEmotion = () => {
   const emotions = ['smile', 'sleeping', 'puke', 'angry'];
-
-  const randomIndex = getRandomInteger(0, emotions.length - 1);
-
-  return emotions[randomIndex];
+  return getRandomElem(emotions);
 };
 
 const generateCoomentDate = () => {
@@ -143,9 +137,7 @@ const generateCoomentDate = () => {
     '2021-04-16T16:12:32.554Z',
   ];
 
-  const randomIndex = getRandomInteger(0, dates.length - 1);
-
-  return dates[randomIndex];
+  return getRandomElem(dates);
 };
 
 const generateComment = () => ({
@@ -157,12 +149,9 @@ const generateComment = () => ({
 });
 
 const generateComments = () => {
-  const comments = new Array(getRandomInteger(1, 5)).fill().map(generateComment);
-
-  const n = getRandomInteger(0, 5);
-  const comment = comments.sort(() => Math.random() - Math.random()).slice(0, n);
-
-  return comment;
+  const COUNT = getRandomInteger(1, 5);
+  const comments = Array.from({ length:COUNT }, generateComment);
+  return comments;
 };
 
 export const generateFilmCard = () => ({

@@ -1,7 +1,23 @@
-export const createSiteSortTemplate = () => (
-  `<ul class="sort">
-    <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
-    <li><a href="#" class="sort__button">Sort by date</a></li>
-    <li><a href="#" class="sort__button">Sort by rating</a></li>
-  </ul>`
-);
+export const createSiteSortTemplate = () => {
+  const sortItems = [
+    {
+      name: 'Sort by default',
+      active: true,
+    },
+    {
+      name: 'Sort by date',
+      active: false,
+    },
+    {
+      name: 'Sort by rating',
+      active: false,
+    },
+  ];
+  const genSortTemplate = (sortItem) => (
+    `<li><a href="#" class="sort__button ${sortItem.active && 'sort__button--active'}">${sortItem.name}</a></li>`
+  );
+  return (
+    `<ul class="sort">
+      ${sortItems.map(genSortTemplate).join('')}
+    </ul>`
+  );};

@@ -109,9 +109,7 @@ export const createFilmDetailsPopup = (card) => {
           <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments.length}</span></h3>
   
           <ul class="film-details__comments-list">
-            ${comments.map((item) => (
-    createCommentsItemTemplate(item)
-  )).join('')}
+            ${comments.map(createCommentsItemTemplate).join('')}
           </ul>
   
           <div class="film-details__new-comment">

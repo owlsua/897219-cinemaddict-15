@@ -12,8 +12,8 @@ import {createFilmCardTemplate} from './view/film-card';
 import {generateFilmCard} from './mock/film-card';
 import {generateFilter} from './mock/filter.js';
 
-const CARD_COUNT = 30;
-const CARD_COUNT_PER_STEP = 5;
+const CARD_COUNT = 17;
+const CARD_OFFSET = 5;
 
 const cards = new Array(CARD_COUNT).fill().map(generateFilmCard);
 const filters = generateFilter(cards);
@@ -35,15 +35,15 @@ const siteFilms = document.querySelector('.films');
 const siteFilmsList = siteFilms.querySelector('.films-list');
 const filmListContainer = siteFilmsList.querySelector('.films-list__container');
 
-for (let i = 1; i <= Math.min(cards.length, CARD_COUNT_PER_STEP); i++) {
+for (let i = 0; i < Math.min(cards.length, CARD_OFFSET); i++) {
   const emptyElement = filmListContainer.querySelector('.films-list__title');
   emptyElement && cards.length > 0 && emptyElement.remove();
 
   render(filmListContainer, createFilmCardTemplate(cards[i]), 'beforeend');
 }
 
-if (cards.length > CARD_COUNT_PER_STEP) {
-  let renderedCardCount = CARD_COUNT_PER_STEP;
+if (cards.length > CARD_OFFSET) {
+  let renderedCardCount = CARD_OFFSET;
 
   render(siteFilmsList, createMoreButtonTemplate(), 'beforeend');
 
@@ -52,10 +52,10 @@ if (cards.length > CARD_COUNT_PER_STEP) {
   loadMoreButton.addEventListener('click', (evt) => {
     evt.preventDefault();
     cards
-      .slice(renderedCardCount, renderedCardCount + CARD_COUNT_PER_STEP)
+      .slice(renderedCardCount, renderedCardCount + CARD_OFFSET)
       .forEach((card) => render(filmListContainer, createFilmCardTemplate(card), 'beforeend'));
 
-    renderedCardCount += CARD_COUNT_PER_STEP;
+    renderedCardCount += CARD_OFFSET;
 
     if (renderedCardCount >= cards.length) {
       loadMoreButton.remove();

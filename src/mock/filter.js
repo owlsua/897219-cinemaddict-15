@@ -7,17 +7,17 @@ const cardToFilterMap = {
   watchlist: {
     name: 'Watchlist',
     count: (cards) => cards
-      .filter((card) => card.watchlist),
+      .filter((card) => card.watchlist).length,
   },
   watched: {
     name: 'Watched',
     count: (cards) => cards
-      .filter((card) => card.watched),
+      .filter((card) => card.watched).length,
   },
   favorites: {
     name: 'Favorites',
     count: (cards) => cards
-      .filter((card) => card.favorites),
+      .filter((card) => card.favorites).length,
   },
 };
 
