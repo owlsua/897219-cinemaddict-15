@@ -1,4 +1,6 @@
-export const createFilmDetailsPopup = (card) => {
+import {createElement} from '../utils.js';
+
+const createFilmDetailsPopup = (card) => {
   const {title, age, rating, releaseDate, director, writters, actors, duration, genres, country, image, description, watchlist, watched, favorites, comments} = card;
 
   const isWatchlist = () => (
@@ -13,7 +15,7 @@ export const createFilmDetailsPopup = (card) => {
     favorites && 'film-details__control-button--active'
   );
 
-  const createCommentsItemTemplate = (commentItem) => {
+  const createCommentsTemplate = (commentItem) => {
     const {author, comment, date, emotion} = commentItem;
     return (`<li class="film-details__comment">
       <span class="film-details__comment-emoji">
@@ -109,7 +111,7 @@ export const createFilmDetailsPopup = (card) => {
           <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments.length}</span></h3>
   
           <ul class="film-details__comments-list">
-            ${comments.map(createCommentsItemTemplate).join('')}
+            ${comments.map(createCommentsTemplate).join('')}
           </ul>
   
           <div class="film-details__new-comment">
@@ -146,3 +148,27 @@ export const createFilmDetailsPopup = (card) => {
     </form>
   </section>`;
 };
+
+export default class FilmCard {
+  constructor(card) {
+    this._card = card;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmDetailsPopup(this._card);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+
