@@ -1,4 +1,6 @@
-export const createSiteSortTemplate = () => {
+import {createElement} from '../utils.js';
+
+const createSiteSortTemplate = () => {
   const sortItems = [
     {
       name: 'Sort by default',
@@ -21,3 +23,26 @@ export const createSiteSortTemplate = () => {
       ${sortItems.map(genSortTemplate).join('')}
     </ul>`
   );};
+
+export default class SiteSort {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSiteSortTemplate();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+
