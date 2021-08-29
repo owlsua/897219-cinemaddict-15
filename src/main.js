@@ -14,6 +14,9 @@ import {generateFilter} from './mock/filter.js';
 
 import {render, renderPosition} from './utils/render';
 
+// import FilmPresenter from './presenter/film';
+
+
 const CARD_COUNT = 17;
 const CARD_OFFSET = 5;
 
@@ -73,6 +76,7 @@ for (let i = 0; i < Math.min(cards.length, CARD_OFFSET); i++) {
   emptyElement && cards.length > 0 && emptyElement.remove();
 
   renderCard(filmListContainer, cards[i]);
+  // mainFilmPresenter.init(cards[i]);
 }
 
 // start load more button
