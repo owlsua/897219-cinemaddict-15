@@ -14,7 +14,7 @@ import {generateFilter} from './mock/filter.js';
 
 import {render, renderPosition} from './utils/render';
 
-// import FilmPresenter from './presenter/film';
+import FilmPresenter from './presenter/film';
 
 
 const CARD_COUNT = 17;

@@ -1,5 +1,5 @@
-import FilmCardView from './view/film-card';
-import FilmPopupView from './view/site-film-detail-popup';
+import FilmCardView from '../view/film-card';
+import FilmPopupView from '../view/site-film-detail-popup';
 import {render, renderPosition} from '../utils/render.js';
 
 export default class FilmCard {
